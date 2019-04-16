@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <table id="table-test" class="table table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>分数</th>
+        </tr>
+        <tr>
+            <td>小红</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>小李</td>
+            <td>80</td>
+        </tr>
+    </table>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        //proxy.js
+        // $('#table-test tr td').click(function (e) {
+        //     var _value = $(this).html();
+        //     var s = '<input type="text" value="' + _value + '"/>';
+        //     $(this).html(s);
+        // });
+        // //冒泡！！！
+        // $('#table-test tr td').on('click', 'input', function (e) {
+        //     e.stopPropagation();
+        // });
+        // $('#table-test tr td').on('keydown', 'input', function (e) {
+        //     if (e.keyCode == 13) {
+        //         var _input = $(e.target);
+        //         _input.parent().html(_input.val());
+        //     }
+        // });
+
+        var index = {
+            init: function () {
+                this.render();
+                this.bind();
+            },
+            render: function () {
+                this.mytd = $('#table-test tr td');
+            },
+            bind: function () {
+                var me = this;
+                me.mytd.click($.proxy(me._do, me));
+            },
+            _do: function (e) {
+                var s = $(e.target);
+                var _value = s.html();
+                var _input = '<input type="text" value="' + _value + '"/>';
+                s.html(_input);
+            }
+        }
+        index.init();
+
+
+        //es6的代理 
+        var person = {
+            name: "张三"
+        };
+
+        var proxy = new Proxy(person, {
+            get: function (target, property) {
+                if (property in target) {
+                    return target[property];
+                } else {
+                    throw new ReferenceError("Property \"" + property + "\" does not exist.");
+                }
+            }
+        });
+
+        proxy.name // "张三"
+        proxy.age // 抛出一个错误
+
+    </script>
+</body>
+
+</html>

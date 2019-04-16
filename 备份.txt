@@ -1,0 +1,7 @@
+1.webpack的入口需要2个 常见的entry server(官网抄过来)
+2.每一个vue的组件里面留一个接口 asyncData 后台直出的时候 先把窜好
+3.window.__INITIAL_STATE__ 他有没有
+4.json文件给nodejs bigpipe
+5.错误权交给了vue nodejs 一旦发生了错误
+6.cache: require('lru-cache')({
+7.ssrStream.on('error', err =>{reject(err)}).pipe(ctx.res);
