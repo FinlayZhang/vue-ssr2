@@ -1,4 +1,4 @@
-# 京程一灯Vue2+KOA2+Webpack3
+# Vue2+KOA2+Webpack3
 
 ------
 
@@ -87,5 +87,3 @@ src
 |  ├─geckodriver
 |  ├─index.js
 |  └selenium-server-standalone-3.5.2.jar
-
-如果你想了解更多 请联系我 yuanzhijia@yidengxuetang.com.
